@@ -10,7 +10,6 @@ function Map(){
 				return {
 					x: 410,
 					y: 406,
-					failed: false
 				}
 			case 1:
 				switch( choice ){
@@ -18,19 +17,18 @@ function Map(){
 						return {
 							x: 401,
 							y: 310,
-							failed: true
 						}
 					case 2:
 						return {
 							x: 356,
 							y: 384,
-							failed: false
+							
 						}
 					case 3:
 						return {
 							x: 395,
 							y: 463,
-							failed: true
+							
 						}
 					
 				}
@@ -42,25 +40,25 @@ function Map(){
 						return {
 							x: 381,
 							y: 211,
-							failed: false
+							
 						}
 					case 2:
 						return {
 							x: 352,
 							y: 259,
-							failed: true
+							
 						}
 					case 3:
 						return {
 							x: 234,
 							y: 403,
-							failed: true
+							
 						}
 					case 4:
 						return {
 							x: 197,
 							y: 452,
-							failed: true
+							
 						}
 					
 				}
@@ -71,31 +69,31 @@ function Map(){
 						return {
 							x: 277,
 							y: 207,
-							failed: true
+							
 						}
 					case 2:
 						return {
 							x: 215,
 							y: 269,
-							failed: false
+							
 						}
 					case 3:
 						return {
 							x: 159,
 							y: 329,
-							failed: true
+							
 						}
 					case 4:
 						return {
 							x: 120,
 							y: 392,
-							failed: true
+							
 						}
 					case 5:
 						return {
 							x: 90,
 							y: 472,
-							failed: true
+							
 						}
 					
 				}
@@ -106,19 +104,19 @@ function Map(){
 						return {
 							x: 619,
 							y: 213,
-							failed: true
+							
 						}
 					case 2:
 						return {
 							x: 106,
 							y: 268,
-							failed: false
+							
 						}
 					case 3:
 						return {
 							x: 60,
 							y: 351,
-							failed: true
+							
 						}
 					
 				}
@@ -128,7 +126,7 @@ function Map(){
 				return {
 					x: 30,
 					y: 238,
-					failed: false
+					
 				}
 			
 		}
@@ -146,7 +144,7 @@ function Faeze(){
 	var self = this;
 	self.go = function(position){
 		self.$el.style.left = (position.x - 27) +'px';
-		self.$el.style.top = (position.y - 70)+'px';
+		self.$el.style.top = (position.y - 75)+'px';
 	}
 	self.level = 0;
 	self.ask = function(map, question, callback){
@@ -164,13 +162,15 @@ function Faeze(){
 			$choice.onclick = function(){
 				var answer = parseInt( this.getAttribute('choice') );
 				$el.remove();
-				if( answer == question.rightAnswer ){
-					callback(answer, true);
-				}
-				else{
-					callback(answer, false);
-				}
-				
+				callback(answer, (function(){
+					var random = Math.random();
+					console.log(random)
+					if (random > 0.3){
+						return true;
+					}else{
+						return false;
+					}
+				})());
 			}
 		}
 		map.$el.appendChild($el);
@@ -219,24 +219,24 @@ map.$el.appendChild( faeze.$el );
 
 var questions = [
 	{
-		body: 'الان باید از رو کدوم پل برم؟ :(',
+		body: 'فائزه در یک کشور آزاد زندگی میکنه و خودش حق انتخاب پوشش رو داره. در این کشور نسبتا سلامت روانی حاکمه یعنی احتمال اینکه در یک رابطه مورد آزار قرار بگیره خیلی کمه ولی برای اینکه بازی هیجان داشته باشه در ۳۰ درصد مواقع احتمال آزار وجود داره. بنابراین فائزه برای رفتن به خونه خیلی نگران نیست و با خیال راحت و آزادانه مسیرش رو انتخاب میکنه.<br>الان باید از رو کدوم پل برم؟ :)',
 		choices: ['دوست پدر', 'عمو', 'پسردایی پدر'],
-		rightAnswer: 2
+		
 	},
 	{
 		body: 'خب خدا رو شکر. از رو عمو رد شدم و بهم تجاوز نکرد. الان از رو کی رد شم؟',
 		choices: ['پسر خواهر', 'داماد عمو', 'پسرعموی مادر', 'شوهر خاله'],
-		rightAnswer: 1
+	
 	},
 	{
 		body: 'بازم خدا رو صد هزار مرتبه شکر که هنوز تمبون تنمه. حالا از کی رد شم؟',
 		choices: ['شوهرعمه', 'پدربزرگ', 'دوست عمو', 'مغازه دار', 'پسر عمو'],
-		rightAnswer: 2
+		
 	},
 	{
 		body: 'آخ جون ^_^ از رو اینم رد شم دیگه کار تمومه. از رو کی برم؟',
 		choices: ['دوست برادر', 'پسر برادر', 'شوهر خواهر'],
-		rightAnswer: 2
+		
 	}
 ]
 

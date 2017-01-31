@@ -21,14 +21,17 @@ html, body{
 
 
 .faeze{
-	position: absolute;
-	background-image: url("faeze.png");
-	width: 55px;
-	height: 88px;
-	transition: all .3s;
-	animation-name: faeze_dance;
-	animation-iteration-count: infinite;
-	animation-duration: .3s;
+	animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-name: faeze_dance;
+    background-image: url("faeze.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 88px;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    width: 55px;
 }
 .faeze.fcked{
     transform: rotateZ(280deg) translateX(-50%);
